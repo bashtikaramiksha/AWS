@@ -68,10 +68,16 @@ uvicorn main:app --reload
 [Demo Link Placeholder]
 
 ## Deployment
-### Frontend Deployment
-- Build with `npm run build`
-- Deploy to Vercel, Netlify, or AWS Amplify.
+### Monorepo Vercel Deployment (Experimental Services)
+To deploy this project to Vercel as a single monorepo:
+1. Connect the repository to Vercel.
+2. In Project Settings, set the framework preset to **Services** (to enable the `experimentalServices` config in [vercel.json](file:///d:/Projects/AWS/vercel.json)).
+3. Configure the following environment variable on Vercel:
+   - `NEXT_PUBLIC_API_URL` = `/_/backend`
+4. The deployment routes the frontend from the root `/` (using Next.js) and the backend from `/_/backend` (using FastAPI, discoverable via [backend/app.py](file:///d:/Projects/AWS/backend/app.py)).
 
-### Backend Deployment
-- Containerize using Docker (optional).
-- Deploy to platforms like Render, Railway, or AWS Elastic Beanstalk/EC2.
+### Local Development Reference
+- Local Backend API: `http://localhost:8000`
+- Local Frontend: `http://localhost:3000`
+- Frontend Local Environment Variable: `NEXT_PUBLIC_API_URL=http://localhost:8000`
+
